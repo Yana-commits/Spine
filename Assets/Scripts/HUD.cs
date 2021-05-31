@@ -1,20 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using System;
 
 public class HUD : MonoBehaviour
 {
     public Joystick joystick;
 
-    public JoyButton button;
+    public Button shootbutton;
 
-    public JoyButton joybutton;
+    public Button bowbutton;
+
+    public JoyButton joyBowButton;
 
     public Slider mySlider;
 
-    public void Test()
+    public Button pauseBtn;
+
+    public Action<JoyButton> OnBow;
+
+    private void Start()
     {
-        Debug.Log("111");
+        bowbutton.onClick.AddListener(() => OnBow?.Invoke(joyBowButton));
     }
+    private void OnDestroy()
+    {
+        bowbutton.onClick.RemoveListener(() => OnBow?.Invoke(joyBowButton));
+    }
+
+    public event UnityAction OnPause
+    {
+        add => pauseBtn.onClick.AddListener(value);
+        remove => pauseBtn.onClick.RemoveListener(value);
+    }
+    public event UnityAction OnShoot
+    {
+        add => shootbutton.onClick.AddListener(value);
+        remove => shootbutton.onClick.RemoveListener(value);
+    }
+   
+  
 }

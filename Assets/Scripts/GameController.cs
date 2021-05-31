@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class GameController : MonoBehaviour
 {
 
     private GameplayState gamePlayState = GameplayState.Stop;
 
+    [Inject]
+    private HUD hud;
+
+    [Inject]
+    private PlayerController player;
+
     void Start()
     {
-        
+        hud.OnShoot += player.Shoot;
+        hud.OnBow += player.BowControl;
     }
 
     
@@ -32,5 +40,10 @@ public class GameController : MonoBehaviour
                 break;
         }
     }
-   
+
+    private void OnDestroy()
+    {
+        hud.OnShoot -= player.Shoot;
+        hud.OnBow -= player.BowControl;
+    }
 }

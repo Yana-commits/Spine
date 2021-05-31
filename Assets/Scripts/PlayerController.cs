@@ -29,9 +29,9 @@ public class PlayerController : Creature
 
     public Joystick joystick;
 
-    public Button button;
+    //public Button button;
 
-    public JoyButton joybutton;
+    //public JoyButton joybutton;
 
     private Rigidbody2D rigidbody;
 
@@ -43,14 +43,11 @@ public class PlayerController : Creature
 
     public float moovement;
 
-    private bool isBow ;
+    private bool isBow;
 
     private BoxCollider2D bc;
 
     public float bowKoef = 0.01f;
-
-    [Inject]
-    private HUD hud;
 
     void Start()
     {
@@ -69,7 +66,7 @@ public class PlayerController : Creature
     {
         Move();
 
-        BowControl();
+        //BowControl();
 
         timeShoot = timeShoot - 1 * Time.fixedDeltaTime;
 
@@ -137,7 +134,7 @@ public class PlayerController : Creature
 
     public void Shoot()
     {
-        hud.Test();
+      
         if (timeShoot <= 0)
         {
             if (!currentState.Equals("throw_ball"))
@@ -171,31 +168,51 @@ public class PlayerController : Creature
         Debug.Log("oy");
     }
 
-    public void BowControl()
+    public void BowControl(JoyButton joybutton)
     {
-        if (!isBow && joybutton.Pressed)
-        {
-            isBow = true;
 
-            skeletonAnimation.AnimationState.SetAnimation(0, bow, false);
+        Debug.Log("111");
+        //if (!isBow )
+        //{
+        //    isBow = true;
 
-            bc.offset = new Vector2(bc.offset.x,bc.offset.y - bc.size.y * (1 - bowKoef) / 2);
+        //    skeletonAnimation.AnimationState.SetAnimation(0, bow, false);
 
-            bc.size = new Vector2(bc.size.x, bowKoef * bc.size.y);
+        //    bc.offset = new Vector2(bc.offset.x,bc.offset.y - bc.size.y * (1 - bowKoef) / 2);
 
-            Debug.Log("bow");
-        }
-        else if ( isBow && !joybutton.Pressed)
-        {
-            isBow = false;
+        //    bc.size = new Vector2(bc.size.x, bowKoef * bc.size.y);
 
-            SetCharacterState("Idle4");
+        //    Debug.Log("bow");
+        //}
+        //else if ( isBow )
+        //{
+        //    isBow = false;
 
-            bc.offset = new Vector2(bc.offset.x, bc.offset.y + (bc.size.y/bowKoef  - bc.size.y) / 2);
+        //    SetCharacterState("Idle4");
 
-            bc.size = new Vector2(bc.size.x, bc.size.y / bowKoef);
-        }
+        //    bc.offset = new Vector2(bc.offset.x, bc.offset.y + (bc.size.y/bowKoef  - bc.size.y) / 2);
+
+        //    bc.size = new Vector2(bc.size.x, bc.size.y / bowKoef);
+        //}
+
+        StartCoroutine(PlayBow());
     }
-   
+
+    private IEnumerator PlayBow()
+    {
+        skeletonAnimation.AnimationState.SetAnimation(0, bow, false);
+
+        bc.offset = new Vector2(bc.offset.x, bc.offset.y - bc.size.y * (1 - bowKoef) / 2);
+
+        bc.size = new Vector2(bc.size.x, bowKoef * bc.size.y);
+
+        yield return new WaitForSeconds(2);
+
+        SetCharacterState("Idle4");
+
+        bc.offset = new Vector2(bc.offset.x, bc.offset.y + (bc.size.y / bowKoef - bc.size.y) / 2);
+
+        bc.size = new Vector2(bc.size.x, bc.size.y / bowKoef);
+    }
 }
 
