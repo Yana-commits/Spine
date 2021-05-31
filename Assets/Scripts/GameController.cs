@@ -17,4 +17,20 @@ public class GameController : MonoBehaviour
     {
         
     }
+
+    public void SetGameState(GameplayState state)
+    {
+        gamePlayState = state;
+        switch (state)
+        {
+            case GameplayState.Play:
+                Time.timeScale = 1;
+                break;
+            case GameplayState.Stop:
+            case GameplayState.Pause:
+                Time.timeScale = 0;
+                break;
+        }
+    }
+   
 }

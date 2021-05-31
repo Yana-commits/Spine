@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Spine.Unity;
 using UnityEngine.UI;
+using Zenject;
 
 public class PlayerController : Creature
 {
@@ -47,6 +48,9 @@ public class PlayerController : Creature
     private BoxCollider2D bc;
 
     public float bowKoef = 0.01f;
+
+    [Inject]
+    private HUD hud;
 
     void Start()
     {
@@ -133,6 +137,7 @@ public class PlayerController : Creature
 
     public void Shoot()
     {
+        hud.Test();
         if (timeShoot <= 0)
         {
             if (!currentState.Equals("throw_ball"))
