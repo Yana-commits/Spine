@@ -13,21 +13,19 @@ public class HUD : MonoBehaviour
 
     public Button bowbutton;
 
-    public JoyButton joyBowButton;
-
     public Slider mySlider;
 
     public Button pauseBtn;
 
-    public Action<JoyButton> OnBow;
+    public Action OnBow;
 
     private void Start()
     {
-        bowbutton.onClick.AddListener(() => OnBow?.Invoke(joyBowButton));
+        bowbutton.onClick.AddListener(() => OnBow?.Invoke());
     }
     private void OnDestroy()
     {
-        bowbutton.onClick.RemoveListener(() => OnBow?.Invoke(joyBowButton));
+        bowbutton.onClick.RemoveListener(() => OnBow?.Invoke());
     }
 
     public event UnityAction OnPause

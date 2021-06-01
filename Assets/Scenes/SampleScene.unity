@@ -405,16 +405,16 @@ RectTransform:
   m_GameObject: {fileID: 287624830}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3040553, y: 6.963208, z: 2.7823782}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 845248877}
   m_Father: {fileID: 1348563264}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -305, y: 285}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -171, y: 97}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &449796601
 GameObject:
@@ -685,22 +685,22 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 386
+      value: 103
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 194
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 256
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 256
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -777,6 +777,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252285020697096, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252285020697096, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -870,18 +880,14 @@ MonoBehaviour:
   previousState: 
   currentAnimation: 
   spineboy: {fileID: 2095437982}
-  snowball: {fileID: 7333407592273161273, guid: 46d80100490c95b42a93033dfbebfa2d,
-    type: 3}
   attackPoint: {fileID: 2024471746}
   directionRight: {x: 1, y: 0.3, z: 0}
   directionLeft: {x: -1, y: 0.3, z: 0}
-  joystick: {fileID: 1477468050}
-  button: {fileID: 287624832}
-  joybutton: {fileID: 1282684038}
-  speed: 5
+  rigidbody: {fileID: 651759760}
   timeShoot: 2
   mySlider: {fileID: 818339843}
   moovement: 0
+  bc: {fileID: 651759759}
   bowKoef: 0.3
 --- !u!4 &651759762
 Transform:
@@ -945,12 +951,12 @@ RectTransform:
   - {fileID: 861321262}
   - {fileID: 476235843}
   m_Father: {fileID: 1348563264}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -58, y: 396}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: -58, y: 209}
+  m_SizeDelta: {x: 80, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &818339843
 MonoBehaviour:
@@ -1119,6 +1125,12 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!50 &1098310268 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 389931462440880656, guid: bee4976bd51a14042bbb759f50017441,
+    type: 3}
+  m_PrefabInstance: {fileID: 389931460853468579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1175051817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1234,7 @@ RectTransform:
   m_GameObject: {fileID: 1282684033}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3137068, y: 7.0147433, z: 2.802971}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1949537897}
   m_Father: {fileID: 1348563264}
@@ -1230,8 +1242,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -521, y: 130}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -258, y: 45}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1282684035
 MonoBehaviour:
@@ -1451,7 +1463,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1494,8 +1506,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1477468049}
-  - {fileID: 287624835}
   - {fileID: 818339842}
+  - {fileID: 287624835}
   - {fileID: 1282684034}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1518,9 +1530,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1477468050}
-  button: {fileID: 0}
-  joybutton: {fileID: 0}
+  shootbutton: {fileID: 287624832}
+  bowbutton: {fileID: 1282684035}
   mySlider: {fileID: 818339843}
+  pauseBtn: {fileID: 0}
 --- !u!224 &1477468049 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
@@ -1911,6 +1924,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d04263723b5a0c45877469a64eabaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  snowball: {fileID: 7333407592273161273, guid: 46d80100490c95b42a93033dfbebfa2d,
+    type: 3}
+  snowBallParent: {fileID: 0}
+  poolCount: 10
+  currentId: 0
 --- !u!4 &2075216554
 Transform:
   m_ObjectHideFlags: 0
@@ -2130,6 +2149,11 @@ PrefabInstance:
       propertyPath: xMax
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1514059681601357661, guid: bee4976bd51a14042bbb759f50017441,
+        type: 3}
+      propertyPath: rigidbody
+      value: 
+      objectReference: {fileID: 1098310268}
     m_RemovedComponents:
     - {fileID: 389931462440880662, guid: bee4976bd51a14042bbb759f50017441, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bee4976bd51a14042bbb759f50017441, type: 3}

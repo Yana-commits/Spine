@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
+    [SerializeField]
+    private Rigidbody2D rigidbody;
+
     private GameObject owner;
     public GameObject Owner { get => owner; set => owner = value; }
 
@@ -21,8 +24,14 @@ public class Damager : MonoBehaviour
             {
                 target.Hit(Damage);
             }
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
         }
         
+    }
+    void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
     }
 }
