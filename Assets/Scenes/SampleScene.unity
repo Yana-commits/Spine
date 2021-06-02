@@ -345,7 +345,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 287624833}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 651759761}
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &287624833
@@ -865,6 +876,8 @@ MonoBehaviour:
   directionRight: {x: 1, y: 0.3, z: 0}
   directionLeft: {x: -1, y: 0.3, z: 0}
   joystick: {fileID: 1477468050}
+  button: {fileID: 287624832}
+  joybutton: {fileID: 1282684038}
   speed: 5
   timeShoot: 2
   mySlider: {fileID: 818339843}
@@ -1505,11 +1518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1477468050}
-  shootbutton: {fileID: 287624832}
-  bowbutton: {fileID: 1282684035}
-  joyBowButton: {fileID: 1282684038}
+  button: {fileID: 0}
+  joybutton: {fileID: 0}
   mySlider: {fileID: 818339843}
-  pauseBtn: {fileID: 0}
 --- !u!224 &1477468049 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
