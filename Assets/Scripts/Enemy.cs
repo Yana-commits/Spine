@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using Zenject;
 
 public class Enemy : Creature
 {
-    [SerializeField]
-    private GameObject snowball;
+    //[SerializeField]
+    //private GameObject snowball;
 
     [SerializeField]
     private Transform attackPoint;
@@ -14,24 +15,27 @@ public class Enemy : Creature
     [SerializeField]
     private float shootPower = 5f;
 
-    public Vector3 direction;
-
+    [SerializeField]
     private Rigidbody2D rigidbody;
 
     private bool moovement = true;
 
     public float speed;
 
+   private Vector3 direction;
+
+    public void Initializie( Transform snowBallParent, int currentId)
+    {
+        this.snowBallParent = snowBallParent;
+        this.currentId = currentId;
+        //this.mySlider = mySlider;
+    }
+
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-
+      
         SetCharacterState(currentState);
-
-        //InvokeRepeating("RandomEvent", 1f, 3f);
-
-        // InvokeRepeating("Shoot", 5f, 5f);
 
         StartCoroutine(EnemyBehave());
 
@@ -162,30 +166,12 @@ public class Enemy : Creature
 
     public void Shoot()
     {
-
         if (transform.localScale != Vector3.one)
         {
             ChangeDirection();
         }
 
-        if (!currentState.Equals("throw_ball"))
-        {
-            previousState = currentState;
-        }
-            SetCharacterState("throw_ball");
-
-            GameObject newBall = Instantiate(snowball, attackPoint.position, attackPoint.rotation) as GameObject;
-
-            newBall.GetComponent<Rigidbody2D>().gravityScale = 0f;
-
-            newBall.GetComponent<Rigidbody2D>().AddForce(direction.normalized * shootPower, ForceMode2D.Impulse);
-
-        Damager ballBehaviour = newBall.GetComponent<Damager>();
-
-             ballBehaviour.Owner = gameObject;
-
-        Destroy(newBall, 2f);
-        
+        Shooter(0, shootPower, attackPoint, direction);
     }
    
 }

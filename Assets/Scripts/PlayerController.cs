@@ -8,34 +8,30 @@ using Zenject;
 
 public class PlayerController : Creature
 {
-    [SerializeField]
-    private GameObject snowball;
-
+  
     [SerializeField]
     private Transform attackPoint;
 
-    private float shootPower = 0f;
+    private float shootPower=0 ;
     public float ShootPower
     {
         get { return shootPower; }
 
         set { shootPower = value; }
     }
+
     private Vector3 direction;
 
     public Vector3 directionRight;
 
     public Vector3 directionLeft;
 
-    public Joystick joystick;
+    private Joystick joystick;
 
-    //public Button button;
-
-    //public JoyButton joybutton;
-
+    [SerializeField]
     private Rigidbody2D rigidbody;
 
-    public int speed;
+   private int speed;
 
     public float timeShoot = 2f;
 
@@ -43,18 +39,24 @@ public class PlayerController : Creature
 
     public float moovement;
 
-    private bool isBow;
-
+    [SerializeField]
     private BoxCollider2D bc;
 
     public float bowKoef = 0.01f;
+   
+
+    public void Initializie( Joystick joystick, int speed, Transform snowBallParent,int currentId)
+    {
+        this.joystick = joystick;
+        this.speed = speed;
+        this.snowBallParent = snowBallParent;
+        this.currentId = currentId;
+        //this.mySlider = mySlider;
+    }
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-
-        bc = GetComponent<BoxCollider2D>();
-
+   
         currentState = "Idle4";
 
         SetCharacterState(currentState);
@@ -66,18 +68,7 @@ public class PlayerController : Creature
     {
         Move();
 
-        //BowControl();
-
         timeShoot = timeShoot - 1 * Time.fixedDeltaTime;
-
-        //mySlider.value = shootPower;
-
-        //shootPower = shootPower + 1 * Time.fixedDeltaTime;
-
-        //if (shootPower >= 10)
-        //{
-       //     shootPower = 0;
-       // }
 
     }
 
@@ -85,7 +76,7 @@ public class PlayerController : Creature
     {
         while (true)
         {
-           
+
             while (shootPower <= 10)
             {
                 mySlider.value = shootPower;
@@ -134,26 +125,12 @@ public class PlayerController : Creature
 
     public void Shoot()
     {
-      
+       
         if (timeShoot <= 0)
         {
-            if (!currentState.Equals("throw_ball"))
-            {
-                previousState = currentState;
-            }
-            SetCharacterState("throw_ball");
-
-            GameObject newBall = Instantiate(snowball, attackPoint.position, attackPoint.rotation) as GameObject;
-
-            newBall.GetComponent<Rigidbody2D>().AddForce(direction.normalized * shootPower, ForceMode2D.Impulse);
-
-            Damager ballBehaviour = newBall.GetComponent<Damager>();
-
-            ballBehaviour.Owner = gameObject;
+            Shooter(1, ShootPower, attackPoint, direction);
 
             timeShoot = 2f;
-
-            Destroy(newBall, 1.5f);
         }
 
     }
@@ -165,36 +142,11 @@ public class PlayerController : Creature
     {
         skeletonAnimation.state.SetAnimation(0, gets_hit, false);
         skeletonAnimation.AnimationState.AddAnimation(0, Idle, true, 0);
-        Debug.Log("oy");
     }
 
-    public void BowControl(JoyButton joybutton)
+    public void BowControl()
     {
-
-        Debug.Log("111");
-        //if (!isBow )
-        //{
-        //    isBow = true;
-
-        //    skeletonAnimation.AnimationState.SetAnimation(0, bow, false);
-
-        //    bc.offset = new Vector2(bc.offset.x,bc.offset.y - bc.size.y * (1 - bowKoef) / 2);
-
-        //    bc.size = new Vector2(bc.size.x, bowKoef * bc.size.y);
-
-        //    Debug.Log("bow");
-        //}
-        //else if ( isBow )
-        //{
-        //    isBow = false;
-
-        //    SetCharacterState("Idle4");
-
-        //    bc.offset = new Vector2(bc.offset.x, bc.offset.y + (bc.size.y/bowKoef  - bc.size.y) / 2);
-
-        //    bc.size = new Vector2(bc.size.x, bc.size.y / bowKoef);
-        //}
-
+      
         StartCoroutine(PlayBow());
     }
 

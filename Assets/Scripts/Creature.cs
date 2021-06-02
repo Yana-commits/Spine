@@ -19,6 +19,12 @@ public class Creature : MonoBehaviour
 
     public SkeletonAnimation spineboy;
 
+    protected Transform snowBallParent;
+
+    protected int currentId;
+
+   
+
 
 
 
@@ -60,17 +66,42 @@ public class Creature : MonoBehaviour
                
             SetAnimation(Idle, true, 1f);
                 break;
-            case "bow":
-                
-                SetAnimation(bow, false, 1f);
-                Debug.Log("bow");
-                break;
             default:
                 SetAnimation(Idle, true, 1f);
                 break;
         }
 
         currentState = state;
+    }
+
+    
+
+    public void Shooter(float gravity, float shootPower,Transform attackPoint,Vector3 direction)
+    {
+        if (!currentState.Equals("throw_ball"))
+        {
+            previousState = currentState;
+        }
+        SetCharacterState("throw_ball");
+
+        GameObject newBall = snowBallParent.GetChild(currentId).gameObject;
+
+        newBall.SetActive(true);
+        newBall.transform.position = attackPoint.position;
+
+        newBall.GetComponent<Rigidbody2D>().gravityScale = gravity;
+        newBall.GetComponent<Rigidbody2D>().AddForce(direction.normalized * shootPower, ForceMode2D.Impulse);
+        
+
+        Damager ballBehaviour = newBall.GetComponent<Damager>();
+       
+        ballBehaviour.Owner = gameObject;
+
+        currentId++;
+        if (currentId > snowBallParent.childCount - 1)
+        {
+            currentId = 0;
+        }
     }
 
 }
