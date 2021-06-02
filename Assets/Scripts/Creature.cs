@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Spine.Unity;
 using UnityEngine.UI;
+using System;
+using Zenject;
 
 public class Creature : MonoBehaviour
 {
@@ -21,12 +23,12 @@ public class Creature : MonoBehaviour
 
     protected Transform snowBallParent;
 
-    protected int currentId;
+    [Inject]
+    private GameController game;
 
+    public int Id;
 
-
-
-
+    //public Action BallCount;
 
     public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timescale)
     {
@@ -84,7 +86,7 @@ public class Creature : MonoBehaviour
         }
         SetCharacterState("throw_ball");
 
-        GameObject newBall = snowBallParent.GetChild(currentId).gameObject;
+        GameObject newBall = snowBallParent.GetChild(game.currentId).gameObject;
 
         newBall.SetActive(true);
         newBall.transform.position = attackPoint.position;
@@ -97,11 +99,15 @@ public class Creature : MonoBehaviour
 
         ballBehaviour.Owner = gameObject;
 
-        currentId++;
-        if (currentId > snowBallParent.childCount - 1)
-        {
-            currentId = 0;
-        }
+        game.SnowBallsCounter();
+        //BallCount?.Invoke();
+        //currentId++;
+        //if (currentId > snowBallParent.childCount - 1)
+        //{
+        //    currentId = 0;
+        //}
+
+        Debug.Log($"{game.currentId}");
     }
 
 }

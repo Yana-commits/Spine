@@ -46,11 +46,11 @@ public class PlayerController : Creature
     public float bowKoef = 0.01f;
    
 
-    public void Initializie( Joystick joystick,Transform snowBallParent,int currentId, Slider slider)
+    public void Initializie( Joystick joystick,Transform snowBallParent, Slider slider)
     {
         this.joystick = joystick;
         this.snowBallParent = snowBallParent;
-        this.currentId = currentId;
+        //this.currentId = currentId;
         this.mySlider = slider;
     }
 
@@ -125,7 +125,6 @@ public class PlayerController : Creature
 
     public void Shoot()
     {
-       
         if (timeShoot <= 0)
         {
             Shooter(1, ShootPower, attackPoint, direction);

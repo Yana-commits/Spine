@@ -24,10 +24,10 @@ public class Enemy : Creature
 
    public Vector3 direction;
 
-    public void Initializie( Transform snowBallParent, int currentId)
+    public void Initializie( Transform snowBallParent)
     {
         this.snowBallParent = snowBallParent;
-        this.currentId = currentId;
+        //this.currentId = currentId;
         //this.mySlider = mySlider;
     }
 
