@@ -22,7 +22,7 @@ public class Enemy : Creature
 
     public float speed;
 
-   private Vector3 direction;
+   public Vector3 direction;
 
     public void Initializie( Transform snowBallParent, int currentId)
     {

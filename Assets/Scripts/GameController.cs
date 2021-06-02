@@ -18,9 +18,6 @@ public class GameController : MonoBehaviour
     private Enemy enemy;
 
     [SerializeField]
-    private int speed;
-
-    [SerializeField]
     private GameObject snowball;
 
     public Transform snowBallParent;
@@ -29,14 +26,14 @@ public class GameController : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
         hud.OnShoot += player.Shoot;
         hud.OnBow += player.BowControl;
 
         PoolSnowBall();
 
-        player.Initializie(hud.joystick,speed, snowBallParent, currentId);
+        player.Initializie(hud.joystick, snowBallParent, currentId,hud.mySlider);
         enemy.Initializie( snowBallParent, currentId);
     }
 

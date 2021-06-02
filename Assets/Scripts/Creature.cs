@@ -23,7 +23,7 @@ public class Creature : MonoBehaviour
 
     protected int currentId;
 
-   
+
 
 
 
@@ -55,16 +55,16 @@ public class Creature : MonoBehaviour
         switch (state)
         {
             case "run":
-        
-            SetAnimation(run, true, 1f);
+
+                SetAnimation(run, true, 1f);
                 break;
             case "throw_ball":
-       
-            SetAnimation(throw_ball, false, 1f);
+
+                SetAnimation(throw_ball, false, 1f);
                 break;
             case "Idle4":
-               
-            SetAnimation(Idle, true, 1f);
+
+                SetAnimation(Idle, true, 1f);
                 break;
             default:
                 SetAnimation(Idle, true, 1f);
@@ -74,9 +74,9 @@ public class Creature : MonoBehaviour
         currentState = state;
     }
 
-    
 
-    public void Shooter(float gravity, float shootPower,Transform attackPoint,Vector3 direction)
+
+    public void Shooter(float gravity, float shootPower, Transform attackPoint, Vector3 direction)
     {
         if (!currentState.Equals("throw_ball"))
         {
@@ -91,10 +91,10 @@ public class Creature : MonoBehaviour
 
         newBall.GetComponent<Rigidbody2D>().gravityScale = gravity;
         newBall.GetComponent<Rigidbody2D>().AddForce(direction.normalized * shootPower, ForceMode2D.Impulse);
-        
+
 
         Damager ballBehaviour = newBall.GetComponent<Damager>();
-       
+
         ballBehaviour.Owner = gameObject;
 
         currentId++;

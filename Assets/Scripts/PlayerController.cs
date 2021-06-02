@@ -31,11 +31,12 @@ public class PlayerController : Creature
     [SerializeField]
     private Rigidbody2D rigidbody;
 
-   private int speed;
+    [SerializeField]
+    private int speed;
 
     public float timeShoot = 2f;
 
-    public Slider mySlider;
+    private Slider mySlider;
 
     public float moovement;
 
@@ -45,13 +46,12 @@ public class PlayerController : Creature
     public float bowKoef = 0.01f;
    
 
-    public void Initializie( Joystick joystick, int speed, Transform snowBallParent,int currentId)
+    public void Initializie( Joystick joystick,Transform snowBallParent,int currentId, Slider slider)
     {
         this.joystick = joystick;
-        this.speed = speed;
         this.snowBallParent = snowBallParent;
         this.currentId = currentId;
-        //this.mySlider = mySlider;
+        this.mySlider = slider;
     }
 
     void Start()
