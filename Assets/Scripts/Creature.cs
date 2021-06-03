@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Spine.Unity;
 using UnityEngine.UI;
+using System;
+using Zenject;
 
 public class Creature : MonoBehaviour
 {
@@ -21,12 +23,12 @@ public class Creature : MonoBehaviour
 
     protected Transform snowBallParent;
 
-    protected int currentId;
+    [Inject]
+    private GameController game;
 
-   
+    public int Id;
 
-
-
+    //public Action BallCount;
 
     public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timescale)
     {
@@ -55,16 +57,16 @@ public class Creature : MonoBehaviour
         switch (state)
         {
             case "run":
-        
-            SetAnimation(run, true, 1f);
+
+                SetAnimation(run, true, 1f);
                 break;
             case "throw_ball":
-       
-            SetAnimation(throw_ball, false, 1f);
+
+                SetAnimation(throw_ball, false, 1f);
                 break;
             case "Idle4":
-               
-            SetAnimation(Idle, true, 1f);
+
+                SetAnimation(Idle, true, 1f);
                 break;
             default:
                 SetAnimation(Idle, true, 1f);
@@ -74,9 +76,9 @@ public class Creature : MonoBehaviour
         currentState = state;
     }
 
-    
 
-    public void Shooter(float gravity, float shootPower,Transform attackPoint,Vector3 direction)
+
+    public void Shooter(float gravity, float shootPower, Transform attackPoint, Vector3 direction)
     {
         if (!currentState.Equals("throw_ball"))
         {
@@ -84,24 +86,28 @@ public class Creature : MonoBehaviour
         }
         SetCharacterState("throw_ball");
 
-        GameObject newBall = snowBallParent.GetChild(currentId).gameObject;
+        GameObject newBall = snowBallParent.GetChild(game.currentId).gameObject;
 
         newBall.SetActive(true);
         newBall.transform.position = attackPoint.position;
 
         newBall.GetComponent<Rigidbody2D>().gravityScale = gravity;
         newBall.GetComponent<Rigidbody2D>().AddForce(direction.normalized * shootPower, ForceMode2D.Impulse);
-        
+
 
         Damager ballBehaviour = newBall.GetComponent<Damager>();
-       
+
         ballBehaviour.Owner = gameObject;
 
-        currentId++;
-        if (currentId > snowBallParent.childCount - 1)
-        {
-            currentId = 0;
-        }
+        game.SnowBallsCounter();
+        //BallCount?.Invoke();
+        //currentId++;
+        //if (currentId > snowBallParent.childCount - 1)
+        //{
+        //    currentId = 0;
+        //}
+
+        Debug.Log($"{game.currentId}");
     }
 
 }

@@ -17,15 +17,15 @@ public class GameController : MonoBehaviour
     [Inject]
     private Enemy enemy;
 
-    [SerializeField]
-    private int speed;
-
-    [SerializeField]
+  
+    [Inject]
     private GameObject snowball;
 
     public Transform snowBallParent;
     public int poolCount = 10;
     public int currentId = 0;
+
+    
 
 
 
@@ -34,10 +34,13 @@ public class GameController : MonoBehaviour
         hud.OnShoot += player.Shoot;
         hud.OnBow += player.BowControl;
 
-        PoolSnowBall();
+        //creature.BallCount += SnowBallsCounter;
 
-        player.Initializie(hud.joystick,speed, snowBallParent, currentId);
-        enemy.Initializie( snowBallParent, currentId);
+        PoolSnowBall();
+  
+        player.Initializie(hud.joystick, snowBallParent,hud.mySlider);
+        enemy.Initializie( snowBallParent);
+        
     }
 
     
@@ -56,7 +59,16 @@ public class GameController : MonoBehaviour
             var instance = Instantiate(snowball, transform.position, transform.rotation, snowBallParent);
             instance.SetActive(false);
         }
+    }
 
+    public void SnowBallsCounter()
+    {
+        currentId++;
+        Debug.Log($"{currentId}");
+        if (currentId > snowBallParent.childCount - 1)
+        {
+            currentId = 0;
+        }
     }
     public void SetGameState(GameplayState state)
     {

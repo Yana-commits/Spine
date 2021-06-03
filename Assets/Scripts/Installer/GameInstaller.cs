@@ -12,5 +12,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle().NonLazy();
 
         Container.Bind<Enemy>().FromComponentInHierarchy().AsSingle().NonLazy();
+
+        Container.Bind<Creature>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }
