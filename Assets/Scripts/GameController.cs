@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     [Inject]
     private HUD hud;
 
-    [Inject]
+    //[Inject]
     private PlayerController player;
 
     [Inject]
@@ -24,12 +24,12 @@ public class GameController : MonoBehaviour
     public int poolCount = 10;
     public int currentId = 0;
 
-    private SnowBallPool pool;
+    //private SnowBallPool pool;
 
     [Inject]
-    private void Construct(SnowBallPool pool)
+    private void Construct(PlayerController player)
     {
-        this.pool = pool;
+        this.player = player;
     }
 
 
@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         player.Initializie(hud.joystick, snowBallParent, hud.mySlider);
         enemy.Initializie(snowBallParent);
 
-        pool.Test();
+        //pool.Test();
     }
     private void PoolSnowBall()
     {

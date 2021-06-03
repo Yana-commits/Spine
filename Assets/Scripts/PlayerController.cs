@@ -44,6 +44,7 @@ public class PlayerController : Creature
     private BoxCollider2D bc;
 
     public float bowKoef = 0.01f;
+
    
 
     public void Initializie( Joystick joystick,Transform snowBallParent, Slider slider)
