@@ -28,8 +28,6 @@ public class Creature : MonoBehaviour
 
     public int Id;
 
-   
-
     //public Action BallCount;
 
     public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timescale)
@@ -102,14 +100,8 @@ public class Creature : MonoBehaviour
         ballBehaviour.Owner = gameObject;
 
         game.SnowBallsCounter();
-        //BallCount?.Invoke();
-        //currentId++;
-        //if (currentId > snowBallParent.childCount - 1)
-        //{
-        //    currentId = 0;
-        //}
 
-        //pool.Test();
+        
     }
 
 }

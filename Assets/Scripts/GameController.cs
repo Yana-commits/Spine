@@ -60,6 +60,11 @@ public class GameController : MonoBehaviour
 
         //pool.Test();
     }
+
+    public void SayHello(JustSignal signal)
+    {
+        Debug.Log("Hello ");
+    }
     private void PoolSnowBall()
     {
         snowBallParent = transform;
