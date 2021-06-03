@@ -36,11 +36,7 @@ public class GameController : MonoBehaviour
 
         //creature.BallCount += SnowBallsCounter;
 
-        PoolSnowBall();
-  
-        player.Initializie(hud.joystick, snowBallParent,hud.mySlider);
-        enemy.Initializie( snowBallParent);
-        
+        StartGame();
     }
 
     
@@ -50,6 +46,13 @@ public class GameController : MonoBehaviour
     }
 
 
+    public void StartGame()
+    {
+        PoolSnowBall();
+
+        player.Initializie(hud.joystick, snowBallParent, hud.mySlider);
+        enemy.Initializie(snowBallParent);
+    }
     private void PoolSnowBall()
     {
         snowBallParent = transform;
