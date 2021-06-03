@@ -59,12 +59,13 @@ MonoBehaviour:
   previousState: 
   currentAnimation: 
   spineboy: {fileID: 74064543223946151}
+  Id: 0
   attackPoint: {fileID: 74064543153635323}
   directionRight: {x: 1, y: 0.3, z: 0}
   directionLeft: {x: -1, y: 0.3, z: 0}
   rigidbody: {fileID: 74064542588228521}
+  speed: 5
   timeShoot: 2
-  mySlider: {fileID: 0}
   moovement: 0
   bc: {fileID: 74064542588228534}
   bowKoef: 0.3

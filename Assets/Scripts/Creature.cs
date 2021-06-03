@@ -106,8 +106,6 @@ public class Creature : MonoBehaviour
         //{
         //    currentId = 0;
         //}
-
-        Debug.Log($"{game.currentId}");
     }
 
 }
