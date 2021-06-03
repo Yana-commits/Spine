@@ -28,6 +28,14 @@ public class Creature : MonoBehaviour
 
     public int Id;
 
+    //private SnowBallPool pool;
+
+    //[Inject]
+    //private void Construct(SnowBallPool pool)
+    //{
+    //    this.pool = pool;
+    //}
+
     //public Action BallCount;
 
     public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timescale)
@@ -106,6 +114,8 @@ public class Creature : MonoBehaviour
         //{
         //    currentId = 0;
         //}
+
+        //pool.Test();
     }
 
 }

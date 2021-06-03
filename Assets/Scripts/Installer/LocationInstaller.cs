@@ -6,6 +6,7 @@ public class LocationInstaller : MonoInstaller
     public Vector3 startPoint;
 
     public GameObject hippoPrefab;
+
     public override void InstallBindings()
     {
       PlayerController player =  Container

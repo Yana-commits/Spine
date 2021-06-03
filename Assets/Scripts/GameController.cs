@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
     [Inject]
     private Enemy enemy;
 
-  
     [Inject]
     private GameObject snowball;
 
@@ -67,7 +66,7 @@ public class GameController : MonoBehaviour
     public void SnowBallsCounter()
     {
         currentId++;
-        Debug.Log($"{currentId}");
+        
         if (currentId > snowBallParent.childCount - 1)
         {
             currentId = 0;
