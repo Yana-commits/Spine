@@ -28,13 +28,7 @@ public class Creature : MonoBehaviour
 
     public int Id;
 
-    //private SnowBallPool pool;
-
-    //[Inject]
-    //private void Construct(SnowBallPool pool)
-    //{
-    //    this.pool = pool;
-    //}
+   
 
     //public Action BallCount;
 
