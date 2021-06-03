@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
         hud.OnShoot += player.Shoot;
         hud.OnBow += player.BowControl;
