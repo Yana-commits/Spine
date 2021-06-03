@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a338f95d96a6f26449a092109beec8de, type: 3}
   m_Name: PrefabInstaller
   m_EditorClassIdentifier: 
-  snowball: {fileID: 0}
+  snowball: {fileID: 7333407592273161273, guid: 46d80100490c95b42a93033dfbebfa2d,
+    type: 3}

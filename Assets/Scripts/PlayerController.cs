@@ -44,15 +44,7 @@ public class PlayerController : Creature
     private BoxCollider2D bc;
 
     public float bowKoef = 0.01f;
-
-    readonly SignalBus _signalBus;
-    [Inject]
-    public PlayerController(SignalBus signalBus)
-    {
-        _signalBus = signalBus;
-    }
-
-
+   
 
     public void Initializie( Joystick joystick,Transform snowBallParent, Slider slider)
     {
@@ -139,7 +131,7 @@ public class PlayerController : Creature
 
             timeShoot = 2f;
         }
-        //_signalBus.Fire<JustSignal>();
+       
     }
     private void Destroyed()
     {

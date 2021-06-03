@@ -58,7 +58,6 @@ public class GameController : MonoBehaviour
         player.Initializie(hud.joystick, snowBallParent, hud.mySlider);
         enemy.Initializie(snowBallParent);
 
-        //pool.Test();
     }
 
     public void SayHello(JustSignal signal)

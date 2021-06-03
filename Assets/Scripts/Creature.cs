@@ -28,6 +28,7 @@ public class Creature : MonoBehaviour
 
     public int Id;
 
+
     //public Action BallCount;
 
     public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timescale)
