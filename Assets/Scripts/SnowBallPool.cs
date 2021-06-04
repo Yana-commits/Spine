@@ -12,17 +12,9 @@ public class SnowBallPool : MonoBehaviour
     public int poolCount = 10;
     public int currentId = 0;
 
-    readonly SignalBus _signalBus;
-    [Inject]
-    public SnowBallPool(SignalBus signalBus)
-    {
-        _signalBus = signalBus;
-    }
-
     void Start()
     {
         PoolSnowBall();
-        _signalBus.Fire<JustSignal>();
     }
 
     private void PoolSnowBall()

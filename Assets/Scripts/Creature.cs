@@ -24,10 +24,9 @@ public class Creature : MonoBehaviour
     protected Transform snowBallParent;
 
     [Inject]
-    private GameController game;
+    private SnowBallPool pool;
 
     public int Id;
-
 
     //public Action BallCount;
 
@@ -87,7 +86,7 @@ public class Creature : MonoBehaviour
         }
         SetCharacterState("throw_ball");
 
-        GameObject newBall = snowBallParent.GetChild(game.currentId).gameObject;
+        GameObject newBall = pool.snowBallParent.GetChild(pool.currentId).gameObject;
 
         newBall.SetActive(true);
         newBall.transform.position = attackPoint.position;
@@ -100,7 +99,7 @@ public class Creature : MonoBehaviour
 
         ballBehaviour.Owner = gameObject;
 
-        game.SnowBallsCounter();
+        pool.SnowBallsCounter();
 
         
     }

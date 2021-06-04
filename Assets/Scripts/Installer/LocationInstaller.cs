@@ -9,11 +9,15 @@ public class LocationInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-      PlayerController player =  Container
-            .InstantiatePrefabForComponent<PlayerController>(hippoPrefab, startPoint, Quaternion.identity, null);
+        PlayerInstal();
+    }
+
+    private void PlayerInstal()
+    {
+        PlayerController player = Container
+               .InstantiatePrefabForComponent<PlayerController>(hippoPrefab, startPoint, Quaternion.identity, null);
 
         Container.
             Bind<PlayerController>().FromInstance(player).AsSingle();
-
     }
 }

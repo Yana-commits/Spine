@@ -13,5 +13,6 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<Enemy>().FromComponentInHierarchy().AsSingle().NonLazy();
 
+        Container.Bind<SnowBallPool>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }

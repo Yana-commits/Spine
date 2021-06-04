@@ -46,10 +46,10 @@ public class PlayerController : Creature
     public float bowKoef = 0.01f;
    
 
-    public void Initializie( Joystick joystick,Transform snowBallParent, Slider slider)
+    public void Initializie( Joystick joystick, Slider slider)
     {
         this.joystick = joystick;
-        this.snowBallParent = snowBallParent;
+        //this.snowBallParent = snowBallParent;
         //this.currentId = currentId;
         this.mySlider = slider;
     }
